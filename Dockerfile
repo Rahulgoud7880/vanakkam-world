@@ -17,7 +17,7 @@ RUN tar -zxvf apache-tomcat-8.5.90.tar.gz
 RUN rm -rf OpenJDK8U-jdk_x64_linux_hotspot_8u372b07.tar.gz
 RUN rm -rf apache-tomcat-8.5.90.tar.gz
 
-RUN mv apache-tomcat-8.5.90 tomcat
+RUN mv apache-tomcat-8.5.90 tomcat8
 RUN mv jdk8u372-b07 java8
 
 
@@ -25,10 +25,10 @@ RUN echo export JAVA_HOME=/opt/java8 >> /etc/profile
 RUN echo export PATH=$PATH:/opt/java8/bin >> /etc/profile
 ENV JAVA_HOME "/opt/java8"
 ENV PATH "${JAVA_HOME}/bin:${PATH}"
-COPY /webapp/target/webapp.war /opt/tomcat/webapps
+COPY /webapp/target/webapp.war /opt/tomcat8/webapps
 
 EXPOSE 8080
 
-CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+CMD ["/opt/tomcat8/bin/catalina.sh", "run"]
 
 
